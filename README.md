@@ -8,7 +8,7 @@
 
 ## 栈
 
-- 基础知识
+- [基础知识](https://github.com/aimeefe/algorithms/tree/master/stack)
 - 每天一道算法题
 
 ## 队列
