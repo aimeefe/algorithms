@@ -76,7 +76,7 @@ Stack.prototype.size = function () {
 
 // print() 输出栈内元素 - 辅助
 Stack.prototype.print = function () {
-  return this.items.toString(',');
+  return this.items.join('');
 }
 ```
 
@@ -106,7 +106,7 @@ class Stack {
     return this.items.length;
   }
   print() {
-    return this.items.toString();
+    return this.items.join('');
   }
 }
 ```
