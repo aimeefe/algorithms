@@ -111,22 +111,32 @@ class Stack {
 }
 ```
 
-测试验证：
+###### demo 二进制转十进制
+
+思路：将十进制数字和2整除（二进制满二进一），直到结果是0位止
 
 ```JavaScript
-let stack = new Stack();
+const divideBy2 = number => {
+  let stack = new Stack(),
+    rem,
+    binaryString;
 
-stack.push(1); //1
-stack.push(2); //1 2
-stack.push(3); //1 2 3
-stack.push(4); //1 2 3 4
-stack.pop(); //1 2 3
-stack.peek(); //3
-stack.clear(); //[]
-stack.push(5); //5
-stack.empty(); //false
-stack.size(); //1
+  while (number > 0) {
+    stack.push(Math.floor(number % 2));
+    number = Math.floor(number / 2);
+  }
+
+  if (!stack.empty()) {
+    const stackItemSting = stack.print();
+    binaryString = [...stackItemSting].reverse().join('');
+  }
+  return binaryString;
+}
+
+// 测试验证
+divideBy2(100) //1100100
 ```
+
 
 
 
