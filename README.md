@@ -13,5 +13,5 @@
 
 ## 队列
 
-- 基础知识
+- [基础知识](https://github.com/aimeefe/algorithms/tree/master/)
 - 每天一道算法题
