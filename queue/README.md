@@ -96,7 +96,9 @@ class Queue {
 
 ### demo 击鼓传花
 
-规则：孩子们围成一个圈，把花尽快传递给旁边的人，某一时候传花停止，这个时候花在谁手里，谁就退出圆圈结束游戏，一直重复这个过程，直到只剩一个孩子（胜者）
+规则：
+
+孩子们围成一个圈，把花尽快传递给旁边的人，某一时候传花停止，这个时候花在谁手里，谁就退出圆圈结束游戏，一直重复这个过程，直到只剩一个孩子（胜者）
 
 思路：
 
@@ -122,8 +124,8 @@ class Queue {
     eliminated = queue.dequeue();
     console.log(`${eliminated}在游戏中被淘汰`);
   }
-  //返回最后的胜利者
-  return queue.front();
+   //返回最后的胜利者
+   return queue.front();
 }
 
 const list = ['stu_1', 'stu_2', 'stu_3', 'stu_4', 'stu_5', 'stu_6'];
