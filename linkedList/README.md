@@ -14,15 +14,15 @@
 
 ## 操作
 
-- `append（element）`向列表尾部添加一个新的项
-- `insert(position, element)`向列表特定位置插入一个新的项
-- `remove(element)`从列表中移除一项
-- `indexof(element)`返回元素在列表中的索引。如果列表中没有该元素则返回 -1
-- `removeAt(position)`从列表特定位置移除一项
-- `empty()`列表是否为空
-- `size()`但会列表包含的元素个数
+- `append（element）` 向列表尾部添加一个新的项
+- `insert(position, element)` 向列表特定位置插入一个新的项
+- `remove(element)` 从列表中移除一项
+- `indexof(element)` 返回元素在列表中的索引。如果列表中没有该元素则返回 -1
+- `removeAt(position)` 从列表特定位置移除一项
+- `empty()` 列表是否为空
+- `size()` 但会列表包含的元素个数
 - `toString()`
-- `print()`输出列表元素（辅助）
+- `print()` 输出列表元素（辅助）
 
 ## 辅助项
 
