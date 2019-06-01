@@ -103,7 +103,8 @@ LinkedList.prototype.append = function (element) {
  * 1. 在列表起点插入一个元素
  *    新元素的 next 引用指向原 head， 然后将 head 赋值为新元素
  * 2. 在其他位置插入一个元素
- *    循环访问列表找到目标位置， 将 position 对应的上一项（ previous） 和当前项（ current） 获取到， 让 previous 的 next 引用指向新元素， 然后将新元素 next 的引用指向 current
+ *    循环访问列表找到目标位置， 将 position 对应的上一项（ previous） 和当前项（ current） 获取到， 
+ *    让 previous 的 next 引用指向新元素， 然后将新元素 next 的引用指向 current
  */
 LinkedList.prototype.insert = function (position, element) {
   if (position < 0 || position > this.length) {
