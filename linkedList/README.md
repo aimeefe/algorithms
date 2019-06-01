@@ -193,7 +193,7 @@ LinkedList.prototype.get = function (position) {
   return current.element;
 }
 
-// indexof(element) 传入元素返回元素在列表中的索引
+/* indexof(element) 传入元素返回元素在列表中的索引 */
 LinkedList.prototype.indexof = function (element) {
   let current = this.head,
       index = 0;
