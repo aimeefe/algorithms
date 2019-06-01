@@ -14,15 +14,16 @@
 
 ## 操作
 
-- `append（element）` 向列表尾部添加一个新的项
+- `append（element）` 向列表尾部添加新的项
 - `insert(position, element)` 向列表特定位置插入一个新的项
-- `remove(element)` 从列表中移除一项
-- `indexof(element)` 返回元素在列表中的索引。如果列表中没有该元素则返回 -1
-- `removeAt(position)` 从列表特定位置移除一项
+- `remove(element)` 从列表中删除指定的元素
+- `removeAt(position)` 删除指定位置的元素
+- `update(element, position)` 更新指定位置的元素值
+- `get(position)` 获取指定位置的元素
+- `indexof(element)` 获取指定元素的索引
 - `empty()` 列表是否为空
-- `size()` 但会列表包含的元素个数
-- `toString()`
-- `print()` 输出列表元素（辅助）
+- `size()` 列表元素长度
+- `print()` 列表元素内容（辅助）
 
 ## 辅助项
 
@@ -30,27 +31,22 @@
 
 ## 实现
 
-### 首先，定义 LinkedList 初始类及辅助项
+### 用 ES5 实现链表
 
 ```JavaScript
-
-/** 定义 Node 节点 **/
+/* 定义 Node 类 */
 function Node(element) {
-  // 要添加到列表的元素
   this.element = element;
-  // 下一个节点的指针，最后一项始终指向 null
   this.next = null;
 }
 
-/** 定义 LinkedList 类 **/
+/* 定义链表 LinkedList 类 */
 function LinkedList() {
-  // 列表长度
-  this.length = 0; 
-  // 第一个节点的引用
   this.head = null;
+  this.length = 0;
 }
 
-/** 找到链表最后一个元素 **/
+/* 找到链表最后一个元素 */
 LinkedList.prototype.lastNode = function () {
   let current = this.head;
 
@@ -60,32 +56,33 @@ LinkedList.prototype.lastNode = function () {
   return current;
 }
 
-/** 找到指定位置的前一个元素和要插入的位置对应的那个元素 **/
-LinkedList.prototype.prevAndCurrent = function (position, current) {
-  let previous, index = 0;
+/* 找到指定位置的前一个元素和要插入的位置对应的那个元素 */
+LinkedList.prototype.prevAndCurrent = function (position) {
+  let previous,
+    index = 0,
+    current = this.head;
+
   while (index++ < position) {
     previous = current;
     current = current.next;
   }
   return {
-    previous,
-    next: current
+    previous, //当前 position 的上一个元素
+    current // 当前 postion 对应的元素
   }
 }
 
-```
 
-### append
-
-##### 场景1：列表为空，添加第一个元素
-###### 此时 head 为 null，让 head 元素指向 node，下一个 node 元素会自动成为 null
-##### 场景2: 列表不为空，向其追加元素
-###### 循环访问列表，找到最后一项，让当前元素的 next 指向要添加到列表的元素
-
-```JavaScript
-/** 向列表尾部添加一个新的项 **/
+/**
+ * append（ element） 向列表尾部添加新的项
+ * 场景：
+ * 1. 列表为空， 添加第一个元素
+ *    把 head 元素赋值给 node
+ * 2. 列表不为空， 向其追加元素
+ *    循环访问列表， 找到最后一项， 让最后一个元素的 next 指向新元素
+ */
 LinkedList.prototype.append = function (element) {
-  let current, node = new Node(element);
+  const node = new Node(element);
 
   // 1. 列表为空，添加的是第一个元素
   if (this.head === null) {
@@ -93,49 +90,145 @@ LinkedList.prototype.append = function (element) {
   }
   // 2. 列表不为空， 向其追加元素
   else {
-    current = this.head;
-    while (current.next) {
-      current = current.next;
-    }
-    current.next = node;
+    this.lastNode().next = node;
   }
   //更新列表长度
   this.length++;
+  return true;
 }
-```
 
-### insert
-
-##### 场景1：在列表起点插入一个元素
-###### 把 node.next 的值设置为列表中的第一个元素，然后让 head 的引用指向 node
-##### 场景2：在其他位置插入一个元素
-###### 循环访问列表找到目标位置， 找到要插入的位置的前一个元素(previous) 和当前位置对应的那个元素(next)， 把 node.next 赋值为 next, 把 previous.next 的引用指向 node
-
-```JavaScript
-/** 向列表特定位置插入一个新的项 **/
-LinkedList.prototype.insert = function (element, position) {
-  const current = this.head;
-  const node = new Node(element);
-
+/**
+ * insert(position, element) 向列表特定位置插入一个新的项
+ * 场景：
+ * 1. 在列表起点插入一个元素
+ *    新元素的 next 引用指向原 head， 然后将 head 赋值为新元素
+ * 2. 在其他位置插入一个元素
+ *    循环访问列表找到目标位置， 将 position 对应的上一项（ previous） 和当前项（ current） 获取到， 让 previous 的 next 引用指向新元素， 然后将新元素 next 的引用指向 current
+ */
+LinkedList.prototype.insert = function (position, element) {
   if (position < 0 || position > this.length) {
     return false;
   }
 
+  const head = this.head,
+    node = new Node(element);
+
   // 在第一个位置添加
   if (position === 0) {
-    node.next = current;
+    node.next = head;
     this.head = node;
-  }
-  // 在其他位置添加
-  else {
-    const {previous, next} = this.prevAndCurrent(position, current);
-    node.next = next;
+  } else {
+    // 在其他位置添加
+    const {
+      previous,
+      current
+    } = this.prevAndCurrent(position);
+    node.next = current;
     previous.next = node;
   }
 
   this.length++;
   return true;
 }
-```
 
+/* remove(element) 从列表中删除指定的元素 */
+LinkedList.prototype.remove = function (element) {
+  const positon = this.indexof(element);
+
+  if (positon >= 0) {
+    return this.removeAt(positon);
+  } else {
+    return null;
+  }
+}
+
+/**
+ * removeAt(position) 从列表特定位置移除一项
+ * 场景：
+ * 1. 删除第一个元素
+ *    将新元素的 next 引用指向原 head， 然后将 head 赋值为新元素
+ * 2. 删除其他位置的元素
+ *    将该位置的上一个元素的 next 的引用指向该位置的下一个元素的
+ */
+LinkedList.prototype.removeAt = function (position) {
+  if (position < 0 || position >= this.length) {
+    return null;
+  }
+
+  // 删除第一个节点
+  let del;
+  if (position === 0) {
+    del = this.head.element;
+    this.head = this.head.next;
+  } else {
+    const {previous, current} = this.prevAndCurrent(position);
+    del = current.element;
+    previous.next = current.next;
+  }
+  this.length--;
+  return del;
+}
+
+/* update(element, position) 修改某个位置的元素 */
+LinkedList.prototype.update = function (position, element) {
+  if (position < 0 || position >= this.length) {
+    return false;
+  }
+
+  // 当前 postion 对应的元素
+  const {current} = this.prevAndCurrent(position);
+  current.element = element;
+  return true;
+}
+
+/* get(position) 传入位置返回该位置对应的元素 */
+LinkedList.prototype.get = function (position) {
+  if (position < 0 || position >= this.length) {
+    return null;
+  }
+
+  // 当前 postion 对应的元素
+  const {current} = this.prevAndCurrent(position);
+  return current.element;
+}
+
+// indexof(element) 传入元素返回元素在列表中的索引
+LinkedList.prototype.indexof = function (element) {
+  let current = this.head,
+      index = 0;
+
+  while (current) {
+    if (current.element === element) {
+      return index;
+    }
+    current = current.next;
+    index++;
+  }
+  //没找到
+  return -1;
+}
+
+/* empty() 列表是否为空 */
+LinkedList.prototype.empty = function () {
+  return this.length === 0;
+}
+
+/* size() 但会列表包含的元素个数 */
+LinkedList.prototype.size = function () {
+  return this.length;
+}
+
+/* print() 查看链表元素 */
+LinkedList.prototype.print = function () {
+  let listString = '',
+      current = this.head;
+
+  while (current) {
+    listString += `${current.element} `;
+    current = current.next;
+  }
+  return listString;
+}
+
+```
 
