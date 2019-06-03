@@ -113,8 +113,6 @@ Set.prototype.union = function (otherSet) {
 
 ### 交集
 
-x(元素) 存在于A中， 且x存在于B中
-
 ```JavaScript
 
 Set.prototype.intersection = function (otherSet) {
@@ -129,8 +127,6 @@ Set.prototype.intersection = function (otherSet) {
 ```
 
 ### 差集
-
-x(元素) 存在于A中， 且x不存在于B中
 
 ```JavaScript
 
