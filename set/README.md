@@ -86,17 +86,9 @@ ES6中新增了Set类，我们可以基于ES6的Set开发我们的 Set 类。
 
 集合可以做如下操作：
 
-- 并集：对于给定的两个集合，返回一个包含两个集合中`所有`元素的新集合
-
-- 交集：对于给定的两个集合，返回一个包含两个集合中`共有`元素的新集合
-
-- 差集：对于给定的两个集合，返回一个包含所有`存在于第一个集合且不存在与第二个集合`的元素的新集合
-
-- 子集：验证一个给定集合是否是另一个集合的`子集`
-
 ### 并集
 
-自动过滤相同元素
+对于给定的两个集合，返回一个包含两个集合中`所有`元素的新集合（自动过滤相同元素）
 
 ```JavaScript
 
@@ -113,6 +105,8 @@ Set.prototype.union = function (otherSet) {
 
 ### 交集
 
+对于给定的两个集合，返回一个包含两个集合中`共有`元素的新集合
+
 ```JavaScript
 
 Set.prototype.intersection = function (otherSet) {
@@ -128,6 +122,8 @@ Set.prototype.intersection = function (otherSet) {
 
 ### 差集
 
+对于给定的两个集合，返回一个包含两个集合中`共有`元素的新集合
+
 ```JavaScript
 
 Set.prototype.difference = function (otherSet) {
@@ -142,6 +138,8 @@ Set.prototype.difference = function (otherSet) {
 ```
 
 ### 子集
+
+对于给定的两个集合，返回一个包含两个集合中`共有`元素的新集合
 
 ```JavaScript
 
