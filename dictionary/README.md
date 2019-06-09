@@ -105,15 +105,6 @@ const func = text => {
   return dictionary.showAll();
 }
 
-func('the brown fox jumped over the blue fox');
+func('the brown fox jumped over the blue fox'); //the: 2, brown: 1, fox: 2, jumped: 1, over: 1, blue: 1
 
-// 结果如下：
-/**
- * the: 2
- * brown: 1
- * fox: 2
- * jumped: 1
- * over: 1
- * blue: 1
- */
 ```
