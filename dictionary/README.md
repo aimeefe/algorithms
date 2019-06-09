@@ -83,6 +83,13 @@ Dictionary.prototype.showAll = function () {
 }
 
 ```
+
+### ES6
+
+es6 中也包含了一个 Map 类（字典）的实现
+
+传送门：[Map](http://es6.ruanyifeng.com/#docs/set-map#Map)
+
 ## 应用
 
 ###### 使用Dictionary类统计一段文本中各个单词出现的次数。该程序显示每个单词出现的次数，但每个单词只显示一次。
