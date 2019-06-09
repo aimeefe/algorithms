@@ -85,7 +85,8 @@ Dictionary.prototype.showAll = function () {
 ```
 ## 应用
 
-###### 使用 Dictionary 类写一个程序，该程序用来存储一段文本中各个单词出现的次数。该程 序显示每个单词出现的次数，但每个单词只显示一次。比如下面一段话“the brown fox jumped over the blue fox”
+###### 使用Dictionary类统计一段文本中各个单词出现的次数。该程序显示每个单词出现的次数，但每个单词只显示一次。
+###### demo: “the brown fox jumped over the blue fox”
 
 ```javascript
 let dictionary = new Dictionary();
