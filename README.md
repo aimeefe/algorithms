@@ -25,3 +25,8 @@
 
 - [基础知识](https://github.com/aimeefe/algorithms/tree/master/set)
 - 每天一道算法题
+
+## 字典
+
+- [基础知识](https://github.com/aimeefe/algorithms/tree/master/dictionary)
+- 每天一道算法题
