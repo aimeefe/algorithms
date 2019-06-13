@@ -30,3 +30,9 @@
 
 - [基础知识](https://github.com/aimeefe/algorithms/tree/master/dictionary)
 - 每天一道算法题
+
+
+## 二叉树和二叉搜索树
+
+- [基础知识](https://github.com/aimeefe/algorithms/tree/master/bst)
+- 每天一道算法题
