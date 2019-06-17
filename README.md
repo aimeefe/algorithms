@@ -36,3 +36,12 @@
 
 - [基础知识](https://github.com/aimeefe/algorithms/tree/master/bst)
 - 每天一道算法题
+
+## 排序和搜索算法
+
+- [冒泡排序](https://github.com/aimeefe/algorithms/tree/master/bubbleSort)
+- [选择排序]
+- [插入排序]
+- [归并排序]
+- [快速排序]
+- 每天一道算法题
