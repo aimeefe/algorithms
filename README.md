@@ -40,7 +40,7 @@
 ## 排序和搜索算法
 
 - [冒泡排序](https://github.com/aimeefe/algorithms/tree/master/bubbleSort)
-- [选择排序]
+- [选择排序](https://github.com/aimeefe/algorithms/tree/master/selectionSort)
 - [插入排序]
 - [归并排序]
 - [快速排序]
