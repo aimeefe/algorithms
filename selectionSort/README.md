@@ -11,7 +11,7 @@
 ```JavaScript
 // 选择排序
 const selectionSort = array => {
-  let minIndex, count = 0;
+  let minIndex;
   const length = array.length;
   //外层循环：控制数组会进行多少轮排序
   for (let i = 0; i < length - 1; i++) {
@@ -23,7 +23,6 @@ const selectionSort = array => {
     }
     //当前最小值索引与新最小值索引不同时，交换两项，把最小值放前面
     i !== minIndex && ([array[i], array[minIndex]] = [array[minIndex], array[i]]);
-    console.log(++count); //7
   }
   return array;
 }
