@@ -9,6 +9,7 @@
 ## 实现
 
 ```JavaScript
+// 选择排序
 const selectionSort = array => {
   let minIndex, count = 0;
   const length = array.length;
@@ -17,17 +18,17 @@ const selectionSort = array => {
     minIndex = i;
     //内层循环：拿第 N + 1 项和 N 项数据进行比较，找出最小的值并它的索引赋值给 minIndex
     for (let j = i + 1; j < length; j++) {
-      if (array[minIndex] > array[j]) 
+      if (array[minIndex] > array[j])
         minIndex = j; //找出最小的那一项并赋值
-      //当前最小值索引与新最小值索引不同时，交换两项，把最小值放前面
-      i !== minIndex && ([array[i], array[minIndex]] = [array[minIndex], array[i]]); 
-      console.log(++count); //28
     }
+    //当前最小值索引与新最小值索引不同时，交换两项，把最小值放前面
+    i !== minIndex && ([array[i], array[minIndex]] = [array[minIndex], array[i]]);
+    console.log(++count); //7
   }
   return array;
 }
 
-selectionSort([4, 2, 5, 6, 666, 22, 1, 12]); //[2, 4, 5, 6, 12, 1, 22, 666]
+console.log(selectionSort([4, 2, 5, 6, 666, 22, 1, 12])); //[2, 4, 5, 6, 12, 1, 22, 666]
 ```
 
 ## 其他
